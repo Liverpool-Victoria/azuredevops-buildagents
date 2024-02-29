@@ -21,8 +21,8 @@ jobs:
   timeoutInMinutes: 600
   cancelTimeoutInMinutes: 30
   pool: 
-    name: ${{ parameters.agent_pool }}
-
+    # name: ${{ parameters.agent_pool }}
+    vmImage: windows-latest
   variables:
   - name: ManagedImageName
     value: $[stageDependencies.buildagent_template_vm.generate_image.outputs['setVars.ManagedImageNameOutput'] ]

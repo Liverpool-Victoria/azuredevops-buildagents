@@ -9,7 +9,10 @@ param(
     [String] [Parameter (Mandatory=$true)] $ResourceGroup,
     [String] [Parameter (Mandatory=$true)] $GalleryName,
     [String] [Parameter (Mandatory=$true)] $GalleryResourceGroup,
-    [String] [Parameter (Mandatory=$true)] $GalleryVmImageDefinition
+    [String] [Parameter (Mandatory=$true)] $GalleryVmImageDefinition,
+    [String] [Parameter (Mandatory=$true)] $ImageType,
+    [String] [Parameter (Mandatory=$true)] $ManagedImageId,
+    [String] [Parameter (Mandatory=$false)] $ReplicationLocation
 )
 
 az login --service-principal --username $ClientId --password $ClientSecret --tenant $TenantId | Out-Null
@@ -25,7 +28,14 @@ $GalleryImageVersion = "$($date.ToString("yyyyMMdd")).$BuildId.0"
 $VmImageVersion = az sig image-version create -g $GalleryResourceGroup  --gallery-name $GalleryName --gallery-image-definition $GalleryVmImageDefinition --gallery-image-version $GalleryImageVersion --managed-image $ManagedImageId --target-regions $Location
 Write-Host "##vso[task.setvariable variable=VmImageVersion;]$VmImageVersion"
 
-Write-Host "Update Gallery Image: $GalleryVmImageDefinition"
+if ($ReplicationLocation) {
+  az sig image-version update --resource-group $GalleryResourceGroup --gallery-name $GalleryName --gallery-image-definition $GalleryVmImageDefinition --gallery-image-version $GalleryImageVersion --add publishingProfile.targetRegions name=$ReplicationLocation regionalReplicaCount=1
+}
+
+
+Write-Host "##vso[task.setvariable variable=VmImageVersion;isOutput=true;]$VmImageVersion"
+
+Write-Host "Update Gallery Image: $GalleryImageDefinition"
 Write-Host "Created VM Image Version: $VMImageversion"
 
 az image delete --ids $managedImageId | Out-Null

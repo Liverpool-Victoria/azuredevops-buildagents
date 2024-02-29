@@ -18,8 +18,8 @@ jobs:
   timeoutInMinutes: 600
   cancelTimeoutInMinutes: 90
   pool: 
-    name: ${{ parameters.agent_pool }}
-    
+    # name: ${{ parameters.agent_pool }}
+    vmImage: windows-latest
   variables:
   - name: GalleryVmImageDefinition
     value: $[stageDependencies.buildagent_template_vm.generate_image.outputs['setVars.GalleryVmImageDefinition'] ]
@@ -47,4 +47,7 @@ jobs:
                  -Location $(AZURE_LOCATION) `
                  -GalleryName $(GALLERY_NAME) `
                  -GalleryResourceGroup $(GALLERY_RESOURCE_GROUP) `
-                 -GalleryVmImageDefinition $(GalleryVmImageDefinition) 
+                 -GalleryVmImageDefinition $(GalleryVmImageDefinition) `
+                 -ImageType $(ImageType) `
+                 -ManagedImageId $(ManagedImageId) `
+                 -ReplicationLocation $(AZURE_REPLICATION_LOCATION)
