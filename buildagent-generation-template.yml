@@ -54,8 +54,7 @@ stages:
         variables:
           - group: ${{ parameters.variable_group_name }}
         pool:
-          name: ${{ parameters.agent_pool }}
-
+          vmImage: windows-latest
         steps:
           - checkout: self
           
