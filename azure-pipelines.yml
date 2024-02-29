@@ -19,3 +19,4 @@ extends:
     variable_group_name: azure-devops-agent-vm-image
     repository_base_path: azuredevops-buildagents
     update_type: galleryvm
+    agent_pool: 'dummy' # this shouldn't be used
