@@ -162,6 +162,7 @@ stages:
           - task: PowerShell@2
             name: buildVm
             displayName: "Build VM"
+            retryCountOnTaskFailure: 5
             inputs:
               targetType: filePath
               filePath: ./runner-images/images.CI/linux-and-win/build-image.ps1
