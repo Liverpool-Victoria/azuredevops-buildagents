@@ -6,7 +6,7 @@ resources:
       type: github
       name: Liverpool-Victoria/azuredevops-buildagents
       endpoint: Liverpool-Victoria
-      ref: refs/heads/main
+      ref: refs/heads/lvfs-customisations
     - repository: runner-images
       type: github
       name: Liverpool-Victoria/runner-images
