@@ -16,6 +16,6 @@ extends:
   template: buildagent-generation-template.yml@azuredevops-buildagents
   parameters:
     image_type: ubuntu2204
-    variable_group: azure-devops-agent-vm-image
+    variable_group_name: azure-devops-agent-vm-image
     repository_base_path: azuredevops-buildagents
     update_type: galleryvm
