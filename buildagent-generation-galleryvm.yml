@@ -48,6 +48,5 @@ jobs:
                  -GalleryName $(GALLERY_NAME) `
                  -GalleryResourceGroup $(GALLERY_RESOURCE_GROUP) `
                  -GalleryVmImageDefinition $(GalleryVmImageDefinition) `
-                 -ImageType $(ImageType) `
                  -ManagedImageId $(ManagedImageId) `
                  -ReplicationLocation $(AZURE_REPLICATION_LOCATION)
