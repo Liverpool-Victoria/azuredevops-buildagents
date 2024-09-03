@@ -10,7 +10,7 @@ param(
     [String] [Parameter (Mandatory=$true)] $GalleryName,
     [String] [Parameter (Mandatory=$true)] $GalleryResourceGroup,
     [String] [Parameter (Mandatory=$true)] $GalleryVmImageDefinition,
-    [String] [Parameter (Mandatory=$true)] $ImageType,
+    # [String] [Parameter (Mandatory=$true)] $ImageType,
     [String] [Parameter (Mandatory=$true)] $ManagedImageId,
     [String] [Parameter (Mandatory=$false)] $ReplicationLocation
 )
