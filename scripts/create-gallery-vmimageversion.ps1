@@ -9,10 +9,10 @@ param(
     [String] [Parameter (Mandatory=$true)] $ResourceGroup,
     [String] [Parameter (Mandatory=$true)] $GalleryName,
     [String] [Parameter (Mandatory=$true)] $GalleryResourceGroup,
-    [String] [Parameter (Mandatory=$true)] $GalleryVmImageDefinition,
+    [String] [Parameter (Mandatory=$true)] $GalleryVmImageDefinition
     # [String] [Parameter (Mandatory=$true)] $ImageType,
-    [String] [Parameter (Mandatory=$true)] $ManagedImageId,
-    [String] [Parameter (Mandatory=$false)] $ReplicationLocation
+    # [String] [Parameter (Mandatory=$true)] $ManagedImageId,
+    # [String] [Parameter (Mandatory=$false)] $ReplicationLocation
 )
 
 az login --service-principal --username $ClientId --password $ClientSecret --tenant $TenantId | Out-Null
