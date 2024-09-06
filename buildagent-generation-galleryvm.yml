@@ -47,4 +47,5 @@ jobs:
                  -Location $(AZURE_LOCATION) `
                  -GalleryName $(GALLERY_NAME) `
                  -GalleryResourceGroup $(GALLERY_RESOURCE_GROUP) `
-                 -GalleryVmImageDefinition $(GalleryVmImageDefinition)
+                 -GalleryVmImageDefinition $(GalleryVmImageDefinition) `
+                 -ReplicationLocation $(AZURE_REPLICATION_LOCATION)
