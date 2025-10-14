@@ -1,0 +1,21 @@
+trigger: none
+
+resources:
+  repositories:
+    - repository: azuredevops-buildagents
+      type: github
+      name: Liverpool-Victoria/azuredevops-buildagents
+      endpoint: Liverpool-Victoria
+      ref: refs/heads/main
+    - repository: runner-images
+      type: github
+      name: Liverpool-Victoria/runner-images
+      endpoint: Liverpool-Victoria
+      ref: refs/heads/main
+extends:
+  template: buildagent-generation-template.yml@azuredevops-buildagents
+  parameters:
+    image_type: ubuntu2204
+    variable_group_name: azure-devops-agent-vm-image
+    repository_base_path: azuredevops-buildagents
+    agent_pool: 'Azure Pipelines' # this shouldn't be used
