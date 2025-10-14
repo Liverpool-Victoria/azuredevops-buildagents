@@ -6,7 +6,7 @@ resources:
       type: github
       name: Liverpool-Victoria/azuredevops-buildagents
       endpoint: Liverpool-Victoria
-      ref: refs/heads/lvfs-customisations
+      ref: refs/heads/main
     - repository: runner-images
       type: github
       name: Liverpool-Victoria/runner-images
@@ -18,5 +18,4 @@ extends:
     image_type: ubuntu2204
     variable_group_name: azure-devops-agent-vm-image
     repository_base_path: azuredevops-buildagents
-    update_type: galleryvm
-    agent_pool: 'dummy' # this shouldn't be used
+    agent_pool: 'Azure Pipelines' # this shouldn't be used
