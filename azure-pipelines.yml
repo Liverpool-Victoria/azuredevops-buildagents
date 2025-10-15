@@ -11,7 +11,7 @@ resources:
       type: github
       name: Liverpool-Victoria/runner-images
       endpoint: Liverpool-Victoria
-      ref: refs/heads/lvfs-customisations
+      ref: refs/heads/main
 extends:
   template: buildagent-generation-template.yml@azuredevops-buildagents
   parameters:
