@@ -164,7 +164,6 @@ stages:
               script: |
                 pwd
                 ls -l
-                exit 1
 
           - task: PowerShell@2
             name: buildVm
