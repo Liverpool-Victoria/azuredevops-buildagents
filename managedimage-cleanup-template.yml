@@ -30,8 +30,6 @@ stages:
 
     steps:
     - checkout: self
-    - ${{ if ne(parameters.repository_base_path, '.') }}:
-      - checkout: ${{ parameters.repository_base_path }}
     - task: PowerShell@2
       name: setVars
       displayName: 'Set image template variables'
