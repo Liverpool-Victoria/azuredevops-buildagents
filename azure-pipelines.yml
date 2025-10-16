@@ -2,18 +2,13 @@ trigger: none
 
 resources:
   repositories:
-    - repository: azuredevops-buildagents
-      type: github
-      name: Liverpool-Victoria/azuredevops-buildagents
-      endpoint: Liverpool-Victoria
-      ref: refs/heads/main
     - repository: runner-images
       type: github
       name: Liverpool-Victoria/runner-images
       endpoint: Liverpool-Victoria
       ref: refs/heads/lvfs-customisation-ubuntu-2404
 extends:
-  template: buildagent-generation-template.yml@azuredevops-buildagents
+  template: buildagent-generation-template.yml
   parameters:
     image_type: ubuntu2404
     variable_group_name: azure-devops-agent-vm-image
