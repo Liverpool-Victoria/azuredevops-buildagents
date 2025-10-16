@@ -137,27 +137,35 @@ stages:
                 Write-Host "##vso[task.setvariable variable=vnet_rg]$vnet_rg"
                 Write-Host "##vso[task.setvariable variable=vnet_subnet]$vnet_subnet"
 
-          - task: PowerShell@2
-            name: gitCheckout
-            displayName: 'Checkout the GitHub repository'
+          # - task: PowerShell@2
+          #   name: gitCheckout
+          #   displayName: 'Checkout the GitHub repository'
+          #   inputs:
+          #     targetType: 'inline'
+          #     script: |
+          #       $github_owner = 'actions'
+          #       $repo_name = 'runner-images'
+
+          #       if (Test-Path ".\$repo_name\") { Remove-Item -Recurse -Force ".\$repo_name\" }
+
+          #       git clone "https://github.com/$github_owner/$repo_name.git"
+                
+          #       if ('$(runner_images_version)' -ne 'alpha') {
+          #         $include_prerelease = if ('$(runner_images_version)' -eq 'prerelease') { $true } else { $false }
+          #         Write-Output "include_prerelease = $include_prerelease"
+          #         $latest_release = ${{ parameters.repository_base_path }}/scripts/get-latestgithubrelease.ps1 -OSTagPrefix '$(image_os)' -GitHubOwner $github_owner -RepoName $repo_name -IncludePrerelease $include_prerelease
+          #         Write-Output "latest_release = $latest_release"
+          #         cd runner-images
+          #         git checkout ($latest_release.tag_name)
+          #       }
+          - task: bash@3
+            displayName: 'List files in the repository'
             inputs:
               targetType: 'inline'
               script: |
-                $github_owner = 'actions'
-                $repo_name = 'runner-images'
-
-                if (Test-Path ".\$repo_name\") { Remove-Item -Recurse -Force ".\$repo_name\" }
-
-                git clone "https://github.com/$github_owner/$repo_name.git"
-                
-                if ('$(runner_images_version)' -ne 'alpha') {
-                  $include_prerelease = if ('$(runner_images_version)' -eq 'prerelease') { $true } else { $false }
-                  Write-Output "include_prerelease = $include_prerelease"
-                  $latest_release = ${{ parameters.repository_base_path }}/scripts/get-latestgithubrelease.ps1 -OSTagPrefix '$(image_os)' -GitHubOwner $github_owner -RepoName $repo_name -IncludePrerelease $include_prerelease
-                  Write-Output "latest_release = $latest_release"
-                  cd runner-images
-                  git checkout ($latest_release.tag_name)
-                }
+                pwd
+                ls -l
+                exit 0
 
           - task: PowerShell@2
             name: buildVm
