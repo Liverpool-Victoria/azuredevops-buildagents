@@ -6,7 +6,7 @@ resources:
       type: github
       name: Liverpool-Victoria/runner-images
       endpoint: Liverpool-Victoria
-      ref: refs/heads/lvfs-customisation-ubuntu-2404
+      ref: refs/heads/lvfs
 extends:
   template: buildagent-generation-template.yml
   parameters:
