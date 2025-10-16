@@ -51,7 +51,9 @@ stages:
 
         steps:
           - checkout: self
-          
+
+          - checkout: runner-images
+
           - task: PowerShell@2
             name: setVars
             displayName: 'Set image template variables'
